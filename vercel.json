@@ -1,9 +1,10 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/bounties", "destination": "/bounties.html" },
+    { "source": "/leaderboard", "destination": "/leaderboard.html" },
+    { "source": "/platform", "destination": "/platform.html" },
+    { "source": "/about", "destination": "/about.html" }
   ]
 }
