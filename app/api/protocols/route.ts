@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+// Force dynamic rendering for API route
+export const dynamic = 'force-dynamic';
+
 
 const protocolSchema = z.object({
   name: z.string().min(1),

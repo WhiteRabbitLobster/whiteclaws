@@ -1,1 +1,1 @@
-{"version":1,"functions":{"/agents/[handle]":{},"/protocols/[slug]":{}}}
+{"version":1,"functions":{"/api/leaderboard":{},"/protocols/[slug]":{},"/api/protocols":{},"/agents/[handle]":{}}}
