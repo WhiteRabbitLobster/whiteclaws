@@ -51,7 +51,7 @@ export default function DashboardContent() {
                   </div>
                   <span className="text-green-400 font-semibold">$2.5M</span>
                 </div>
-                <a href="/protocols/aave-v3/submit" className="mt-4 inline-block text-indigo-400 hover:text-indigo-300 text-sm">
+                <a href="/bounties/aave-v3/submit" className="mt-4 inline-block text-indigo-400 hover:text-indigo-300 text-sm">
                   Submit Finding →
                 </a>
               </div>
@@ -64,7 +64,7 @@ export default function DashboardContent() {
                   </div>
                   <span className="text-green-400 font-semibold">$2.25M</span>
                 </div>
-                <a href="/protocols/uniswap/submit" className="mt-4 inline-block text-indigo-400 hover:text-indigo-300 text-sm">
+                <a href="/bounties/uniswap/submit" className="mt-4 inline-block text-indigo-400 hover:text-indigo-300 text-sm">
                   Submit Finding →
                 </a>
               </div>

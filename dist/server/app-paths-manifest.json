@@ -3,17 +3,17 @@
   "/about/page": "app/about/page.js",
   "/auth/callback/page": "app/auth/callback/page.js",
   "/bounties/page": "app/bounties/page.js",
-  "/leaderboard/page": "app/leaderboard/page.js",
+  "/competitions/page": "app/competitions/page.js",
   "/dashboard/page": "app/dashboard/page.js",
+  "/leaderboard/page": "app/leaderboard/page.js",
   "/learn/page": "app/learn/page.js",
-  "/login/page": "app/login/page.js",
   "/page": "app/page.js",
+  "/login/page": "app/login/page.js",
   "/platform/page": "app/platform/page.js",
-  "/protocols/page": "app/protocols/page.js",
   "/resources/page": "app/resources/page.js",
   "/worldboard/page": "app/worldboard/page.js",
-  "/agents/[handle]/page": "app/agents/[handle]/page.js",
   "/api/leaderboard/route": "app/api/leaderboard/route.js",
-  "/api/protocols/route": "app/api/protocols/route.js",
-  "/protocols/[slug]/page": "app/protocols/[slug]/page.js"
+  "/agents/[handle]/page": "app/agents/[handle]/page.js",
+  "/competitions/[id]/page": "app/competitions/[id]/page.js",
+  "/api/protocols/route": "app/api/protocols/route.js"
 }

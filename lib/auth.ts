@@ -64,7 +64,7 @@ export async function signOut(): Promise<void> {
 // Check if route should be protected
 export function isProtectedRoute(pathname: string): boolean {
   const protectedPaths = [
-    '/protocols/',
+    '/bounties/',
     '/agents/',
     '/dashboard',
     '/submit',

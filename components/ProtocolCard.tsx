@@ -27,7 +27,7 @@ export default function ProtocolCard({
   
   return (
     <Link 
-      href={`/protocols/${slug}`} 
+      href={`/bounties/${slug}`} 
       className="block bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-indigo-500 transition-colors"
       role="article"
     >

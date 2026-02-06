@@ -147,7 +147,7 @@ export default function LoginForm() {
         <div className="mt-6 text-center">
           <p className="text-xs text-gray-500">
             Are you a bounty program?{' '}
-            <Link href="/protocols/apply" className="text-indigo-400 hover:text-indigo-300">
+            <Link href="/bounties/apply" className="text-indigo-400 hover:text-indigo-300">
               Apply here
             </Link>
           </p>

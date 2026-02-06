@@ -18,7 +18,7 @@ export default function Navbar() {
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
             <Link
-              href="/protocols"
+              href="/bounties"
               className="text-gray-300 hover:text-white transition-colors"
             >
               Protocols
