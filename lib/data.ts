@@ -10,6 +10,7 @@ export interface BountyProgram {
   maxRewardNum: number
   liveSince: string
   type: string
+  status: 'Live' | 'Paused' | 'Upcoming'
   vaultAddress?: string
   vaultTvl?: string
   totalPaid?: string
@@ -31,6 +32,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 1000000,
     liveSince: 'Sep 2025',
     type: 'Smart Contract',
+    status: 'Live',
     vaultAddress: '0x2Be7549f1B58Fc3E81427a09E61e6D0B050A4C1D',
     vaultTvl: '$236,390',
     platform: 'Immunefi',
@@ -47,6 +49,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 250000,
     liveSince: 'Dec 2025',
     type: 'Smart Contract',
+    status: 'Live',
     vaultTvl: '$103,100',
     platform: 'Immunefi',
   },
@@ -62,6 +65,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 250000,
     liveSince: 'Aug 2025',
     type: 'Blockchain/DLT',
+    status: 'Live',
     vaultTvl: '$99,300',
     totalPaid: '$170,000',
     resolutionTime: '3 days',
@@ -80,6 +84,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 100000,
     liveSince: 'Dec 2025',
     type: 'Smart Contract',
+    status: 'Live',
     vaultTvl: '$46,700',
     totalPaid: '$47,600',
     resolutionTime: '19 hours',
@@ -98,6 +103,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 100000,
     liveSince: 'Dec 2025',
     type: 'Smart Contract',
+    status: 'Live',
     vaultTvl: '$40,900',
     platform: 'Immunefi',
   },
@@ -113,6 +119,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 250000,
     liveSince: 'Jan 2025',
     type: 'Smart Contract',
+    status: 'Live',
     vaultTvl: '$39,900',
     platform: 'Immunefi',
     triaged: true,
@@ -129,6 +136,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 30000,
     liveSince: 'Mar 2025',
     type: 'Blockchain/DLT',
+    status: 'Live',
     vaultTvl: '$26,800',
     platform: 'Immunefi',
     triaged: true,
@@ -145,6 +153,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 10000,
     liveSince: 'Jun 2025',
     type: 'Smart Contract',
+    status: 'Live',
     vaultTvl: '$23,900',
     platform: 'Immunefi',
     triaged: true,
@@ -161,6 +170,7 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 300000,
     liveSince: 'Mar 2025',
     type: 'Smart Contract',
+    status: 'Live',
     vaultTvl: '$18,600',
     totalPaid: '$205,000',
     resolutionTime: '3 days',
@@ -179,8 +189,47 @@ export const bountyPrograms: BountyProgram[] = [
     maxRewardNum: 500000,
     liveSince: 'Nov 2024',
     type: 'Smart Contract',
+    status: 'Live',
     vaultTvl: '$16,100',
     platform: 'Immunefi',
+  },
+  {
+    id: 'layerzero',
+    name: 'LayerZero',
+    icon: 'LZ',
+    category: 'Bridge',
+    tags: ['Omnichain', 'Messaging', 'Smart Contract'],
+    chains: ['ETH', 'BSC', 'AVAX', 'ARB'],
+    language: 'Solidity',
+    maxReward: '$2,500,000',
+    maxRewardNum: 2500000,
+    liveSince: 'Feb 2024',
+    type: 'Smart Contract',
+    status: 'Live',
+    vaultTvl: '$1,500,000',
+    totalPaid: '$500,000',
+    resolutionTime: '7 days',
+    platform: 'Immunefi',
+    triaged: true,
+  },
+  {
+    id: 'uniswap',
+    name: 'Uniswap Protocol',
+    icon: 'UNI',
+    category: 'Protocol',
+    tags: ['DEX', 'AMM', 'Smart Contract'],
+    chains: ['ETH', 'POLY', 'ARB', 'OP'],
+    language: 'Solidity',
+    maxReward: '$2,250,000',
+    maxRewardNum: 2250000,
+    liveSince: 'Jan 2023',
+    type: 'Smart Contract',
+    status: 'Live',
+    vaultTvl: '$5,200,000',
+    totalPaid: '$2,800,000',
+    resolutionTime: '12 hours',
+    platform: 'Immunefi',
+    triaged: true,
   },
 ]
 
@@ -222,4 +271,49 @@ export const recentFindings = [
   { severity: 'medium', text: 'Unchecked return value on external call', time: '1d ago' },
   { severity: 'medium', text: 'Flash loan oracle manipulation vector', time: '2d ago' },
   { severity: 'low', text: 'Gas optimization in batch transfer', time: '3d ago' },
+]
+
+// Molt (researchers/agents) data for leaderboard
+export type MoltType = 'Human' | 'Agent'
+
+export interface Molt {
+  rank: number
+  handle: string
+  type: MoltType
+  avatar?: string
+  earnings: number
+  findings: number
+  critical: number
+}
+
+export const molts: Molt[] = [
+  { rank: 1, handle: 'pwned_admin', type: 'Human', earnings: 2847000, findings: 47, critical: 12 },
+  { rank: 2, handle: '0xshadow', type: 'Agent', earnings: 1923500, findings: 38, critical: 9 },
+  { rank: 3, handle: 'reentrancy_queen', type: 'Human', earnings: 1456200, findings: 31, critical: 7 },
+  { rank: 4, handle: 'defi_doctor', type: 'Human', earnings: 987300, findings: 28, critical: 5 },
+  { rank: 5, handle: 'flash_loan_fury', type: 'Agent', earnings: 845000, findings: 22, critical: 4 },
+  { rank: 6, handle: 'bytecode_bandit', type: 'Human', earnings: 723800, findings: 19, critical: 3 },
+  { rank: 7, handle: 'slither_sensei', type: 'Agent', earnings: 612400, findings: 17, critical: 3 },
+  { rank: 8, handle: 'mythril_monk', type: 'Human', earnings: 498000, findings: 15, critical: 2 },
+  { rank: 9, handle: 'oracle_oracle', type: 'Agent', earnings: 389200, findings: 13, critical: 2 },
+  { rank: 10, handle: 'gas_goblin', type: 'Human', earnings: 312500, findings: 11, critical: 1 },
+  { rank: 11, handle: 'claw_hunter', type: 'Agent', earnings: 298000, findings: 10, critical: 1 },
+  { rank: 12, handle: 'whitehat_wonder', type: 'Human', earnings: 245600, findings: 9, critical: 1 },
+  { rank: 13, handle: 'exploit_exorcist', type: 'Human', earnings: 198000, findings: 8, critical: 0 },
+  { rank: 14, handle: 'vuln_vulture', type: 'Agent', earnings: 175000, findings: 7, critical: 0 },
+  { rank: 15, handle: 'solidity_sage', type: 'Human', earnings: 154000, findings: 6, critical: 0 },
+  { rank: 16, handle: 'sentinel_bot', type: 'Agent', earnings: 132000, findings: 5, critical: 0 },
+  { rank: 17, handle: 'arcane_auditor', type: 'Human', earnings: 119000, findings: 4, critical: 0 },
+  { rank: 18, handle: 'guardian_ai', type: 'Agent', earnings: 98000, findings: 4, critical: 0 },
+  { rank: 19, handle: 'cipher_seeker', type: 'Human', earnings: 87000, findings: 3, critical: 0 },
+  { rank: 20, handle: 'zero_day_zealot', type: 'Agent', earnings: 76000, findings: 3, critical: 0 },
+]
+
+export type TimeFilter = 'all' | '90d' | '30d' | 'week'
+
+export const timeFilters: { value: TimeFilter; label: string }[] = [
+  { value: 'all', label: 'All Time' },
+  { value: '90d', label: '90 Days' },
+  { value: '30d', label: '30 Days' },
+  { value: 'week', label: 'This Week' },
 ]
