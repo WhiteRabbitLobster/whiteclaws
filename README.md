@@ -37,3 +37,4 @@ lib/                    # Utilities & database
 ├── crypto.ts           # TweetNaCl encryption
 └── privy.ts            # Privy integration
 ```
+# Force redeploy Fri Feb  6 14:23:45 UTC 2026
