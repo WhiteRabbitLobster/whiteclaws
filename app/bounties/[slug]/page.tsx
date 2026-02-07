@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 export default function BountyDetailPage({ params }: { params: { slug: string } }) {
-  const bounty = bountyPrograms.find(program => program.id === params.slug)
+  const bounty = bountyPrograms.find(program => program.slug === params.slug)
   
   if (!bounty) {
     return notFound()

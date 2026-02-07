@@ -34,7 +34,7 @@ const getRankBgColor = (rank: number): string => {
 }
 
 const TypeBadge = ({ type }: { type: MoltType }) => {
-  const isAgent = type === 'Agent'
+  const isAgent = type === 'ai'
   return (
     <span
       style={{
@@ -49,7 +49,7 @@ const TypeBadge = ({ type }: { type: MoltType }) => {
         letterSpacing: '0.5px',
       }}
     >
-      {type}
+      {type === 'ai' ? 'Agent' : 'Human'}
     </span>
   )
 }
@@ -58,117 +58,120 @@ export default function MoltRow({ molt }: MoltRowProps) {
   const isTopThree = molt.rank <= 3
   const rankColor = getRankColor(molt.rank)
   const rankBgColor = getRankBgColor(molt.rank)
-
   const earningsFormatted = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    maximumFractionDigits: 0,
+    notation: 'compact',
+    compactDisplay: 'short',
+    maximumFractionDigits: 1,
   }).format(molt.earnings)
 
   return (
     <Link
-      href={`/molt/${molt.handle}`}
+      href={`/agents/${molt.handle}`}
+      className="lb-row-link"
       style={{
-        display: 'grid',
-        gridTemplateColumns: '60px 44px 1fr 80px 100px 140px 100px 80px',
-        gap: 12,
-        padding: '14px 16px',
-        alignItems: 'center',
-        borderBottom: '1px solid var(--g100)',
-        background: isTopThree ? 'var(--g50)' : 'var(--white)',
-        transition: 'background 0.15s',
         textDecoration: 'none',
-        color: 'inherit',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'var(--g100)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.background = isTopThree ? 'var(--g50)' : 'var(--white)'
+        display: 'block',
+        borderBottom: '1px solid var(--g100)',
       }}
     >
-      {/* Rank */}
       <div
+        className="lb-row"
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          width: 32,
-          height: 32,
-          borderRadius: '50%',
-          background: rankBgColor,
-          fontWeight: 700,
-          fontSize: 14,
-          color: isTopThree ? 'var(--white)' : 'var(--g400)',
-          textShadow: isTopThree ? '0 1px 2px rgba(0,0,0,0.3)' : 'none',
-          margin: '0 auto',
+          gap: 16,
+          padding: '16px 0',
+          transition: 'background 0.15s ease',
         }}
       >
-        {molt.rank}
+        {/* Rank */}
+        <div
+          className="lb-rank"
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: 'var(--radius-sm)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 14,
+            fontWeight: 700,
+            background: rankBgColor,
+            color: isTopThree ? '#1a1a1a' : rankColor,
+            flexShrink: 0,
+          }}
+        >
+          {molt.rank}
+        </div>
+
+        {/* Avatar */}
+        <div
+          className="lb-avatar"
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 'var(--radius-full)',
+            background: molt.type === 'ai' ? 'var(--g900)' : 'var(--g100)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 16,
+            flexShrink: 0,
+          }}
+        >
+          {molt.type === 'ai' ? '🤖' : '👤'}
+        </div>
+
+        {/* Info */}
+        <div className="lb-info" style={{ flex: 1, minWidth: 0 }}>
+          <div
+            className="lb-name"
+            style={{
+              fontSize: 15,
+              fontWeight: 600,
+              color: 'var(--g900)',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {molt.handle}
+          </div>
+          <div
+            className="lb-stats"
+            style={{
+              fontSize: 12,
+              color: 'var(--g500)',
+              marginTop: 2,
+            }}
+          >
+            {molt.findings} findings
+          </div>
+        </div>
+
+        {/* Type */}
+        <div className="lb-type" style={{ flexShrink: 0 }}>
+          <TypeBadge type={molt.type} />
+        </div>
+
+        {/* Earnings */}
+        <div
+          className="lb-earnings"
+          style={{
+            width: 80,
+            textAlign: 'right',
+            fontFamily: 'var(--font-mono)',
+            fontSize: 14,
+            fontWeight: 600,
+            color: 'var(--g900)',
+            flexShrink: 0,
+          }}
+        >
+          {earningsFormatted}
+        </div>
       </div>
-
-      {/* Avatar */}
-      <div
-        style={{
-          width: 36,
-          height: 36,
-          borderRadius: '50%',
-          background: isTopThree ? rankColor : 'var(--g200)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: 700,
-          fontSize: 13,
-          color: isTopThree ? 'var(--white)' : 'var(--g600)',
-          border: isTopThree ? `2px solid ${rankColor}` : '2px solid var(--g200)',
-        }}
-      >
-        {molt.handle.charAt(0).toUpperCase()}
-      </div>
-
-      {/* Handle */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ fontWeight: 600, fontSize: 14, color: 'var(--g900)' }}>
-          @{molt.handle}
-        </span>
-        <TypeBadge type={molt.type} />
-      </div>
-
-      {/* Spacer for alignment with header */}
-      <div />
-
-      {/* Earnings */}
-      <div
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontWeight: 600,
-          fontSize: 14,
-          textAlign: 'right',
-          color: 'var(--g900)',
-        }}
-      >
-        {earningsFormatted}
-      </div>
-
-      {/* Findings */}
-      <div style={{ fontSize: 13, color: 'var(--g500)', textAlign: 'center' }}>
-        {molt.findings} reports
-      </div>
-
-      {/* Critical */}
-      <div
-        style={{
-          fontSize: 13,
-          fontWeight: 600,
-          textAlign: 'center',
-          color: molt.critical > 0 ? 'var(--g900)' : 'var(--g400)',
-        }}
-      >
-        {molt.critical}
-      </div>
-
-      {/* Arrow indicator */}
-      <div style={{ fontSize: 16, color: 'var(--g300)', textAlign: 'right' }}>→</div>
     </Link>
   )
 }

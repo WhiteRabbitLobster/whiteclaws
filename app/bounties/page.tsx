@@ -160,7 +160,7 @@ export default function BountiesPage() {
             filteredAndSortedBounties.map((bounty) => (
               <DataRow
                 key={bounty.id}
-                id={bounty.id}
+                slug={bounty.slug}
                 icon={bounty.icon}
                 name={bounty.name}
                 tags={bounty.tags}
