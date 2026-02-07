@@ -38,3 +38,4 @@ lib/                    # Utilities & database
 └── privy.ts            # Privy integration
 ```
 # Force redeploy Fri Feb  6 14:23:45 UTC 2026
+# trigger redeploy Sat Feb  7 01:27:33 UTC 2026
